@@ -1,10 +1,17 @@
 package com.ggave.mastocasapi.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "usuario")
@@ -12,50 +19,68 @@ public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long id_usu;
 	
-	private String nombre;
+	private String nombre_usu;
 	
-	private String correo;
+	private String correo_usu;
 	
-	private String contraseña;
+	private String password_usu;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name=("usuario_id"),referencedColumnName="id_usu")
+    private List<Mascotas> mascotas=new ArrayList<>();
 
-	public Long getId() {
-		return id;
+	public Long getId_usu() {
+		return id_usu;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId_usu(Long id_usu) {
+		this.id_usu = id_usu;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getNombre_usu() {
+		return nombre_usu;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombre_usu(String nombre_usu) {
+		this.nombre_usu = nombre_usu;
 	}
 
-	public String getCorreo() {
-		return correo;
+	public String getCorreo_usu() {
+		return correo_usu;
 	}
 
-	public void setCorreo(String correo) {
-		this.correo = correo;
+	public void setCorreo_usu(String correo_usu) {
+		this.correo_usu = correo_usu;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+
+	public String getPassword_usu() {
+		return password_usu;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setPassword_usu(String password_usu) {
+		this.password_usu = password_usu;
+	}
+
+	public List<Mascotas> getMascotas() {
+		return mascotas;
+	}
+
+	public void setMascotas(List<Mascotas> mascotas) {
+		this.mascotas = mascotas;
 	}
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nombre=" + nombre + ", correo=" + correo + ", contraseña=" + contraseña + "]";
+		return "Usuario [id_usu=" + id_usu + ", nombre_usu=" + nombre_usu + ", correo_usu=" + correo_usu
+				+ ", password_usu=" + password_usu + ", mascotas=" + mascotas + "]";
 	}
+	
+	
+
+
 	
 	
 	

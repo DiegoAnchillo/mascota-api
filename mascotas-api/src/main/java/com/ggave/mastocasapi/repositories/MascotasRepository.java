@@ -8,6 +8,6 @@ import com.ggave.mastocasapi.entities.Mascotas;
 
 public interface MascotasRepository extends CrudRepository<Mascotas, Long> {
 	
-	
+	@Override
 	List<Mascotas> findAll();
 }

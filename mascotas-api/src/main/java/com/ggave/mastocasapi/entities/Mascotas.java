@@ -22,7 +22,7 @@ public class Mascotas {
 	
 	private String imagen;
 	
-	private int usuario_id;
+	private Long usuario_id;
 
 	public Long getId() {
 		return id;
@@ -64,11 +64,12 @@ public class Mascotas {
 		this.imagen = imagen;
 	}
 
-	public int getUsuario_id() {
+
+	public Long getUsuario_id() {
 		return usuario_id;
 	}
 
-	public void setUsuario_id(int usuario_id) {
+	public void setUsuario_id(Long usuario_id) {
 		this.usuario_id = usuario_id;
 	}
 

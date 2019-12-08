@@ -21,10 +21,20 @@ public class UsuarioServiceImpl implements UsuarioService {
 	private UsuarioRepository urepository;
 	
 	
-	
+
+	@Override
+	public Usuario findByUsernameAndPassword(String correo_usu, String password_usu) {
+		return urepository.findByUsernameAndPassword(correo_usu, password_usu);
+	}
+
+	@Override
+	public Usuario findByUsername(String correo_usu) {
+		return urepository.findByUsername(correo_usu);
+	}
+
 	@Override
 	public List<Usuario> findAll() {
-		return urepository.findAll();
+		return (List<Usuario>) urepository.findAll();
 	}
 
 	@Override
@@ -32,12 +42,16 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return urepository.findById(id).orElseThrow(() -> new EntityNotFoundException("No existe registro"));
 	}
 
-	public void save(Usuario usuario) {
-		urepository.save(usuario);
+	@Override
+	public void save(Usuario usuarios) {
+		urepository.save(usuarios);
+		
 	}
 
+	@Override
 	public void deleteById(Long id) {
 		urepository.deleteById(id);
+		
 	}
 	
 }

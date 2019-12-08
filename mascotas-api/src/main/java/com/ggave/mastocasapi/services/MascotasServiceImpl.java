@@ -18,25 +18,29 @@ public class MascotasServiceImpl implements MascotasService {
 	
 	@Autowired
 	private MascotasRepository mrepository;
-	
 
-
-	public void save(Mascotas mascotas) {
-		mrepository.save(mascotas);
-		
-	}
-
-	public void deletedById(Long id) {
-		mrepository.deleteById(id);
-	
-	}
-
+	@Override
 	public List<Mascotas> findAll() {
 		return mrepository.findAll();
 	}
 
+	@Override
 	public Mascotas findById(Long id) {
 		return mrepository.findById(id).orElseThrow(() -> new EntityNotFoundException("No existe registro"));
 	}
+
+	@Override
+	public void save(Mascotas mascota) {
+		mrepository.save(mascota);
+		
+	}
+
+	@Override
+	public void deleteById(Long id) {
+		mrepository.deleteById(id);
+		
+	}
+	
+
 	
 }
